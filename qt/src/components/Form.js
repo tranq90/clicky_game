@@ -49,6 +49,7 @@ class Form extends Component {
     }]
   };
 
+  //handle shuffling of characters after it is clicked
   shuffle(characters) {
     var j, x, i;
     for (i = characters.length - 1; i > 0; i--) {
@@ -68,10 +69,20 @@ class Form extends Component {
     });
   };
 
+  //not sure why it's selecting the entire array instead of each object
   render() {
     return (
       <div>
-
+        {this.state.characters.map(character => (
+          <img 
+          height="150px" 
+          width="150px" 
+          src={character.src}
+          value={character.name}
+          clicked={character.clicked}
+          onClick={this.handleClick}
+          />
+        ))}
       </div>
     );
   }
